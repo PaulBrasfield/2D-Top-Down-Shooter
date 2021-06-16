@@ -8,6 +8,8 @@ public class SpawnEnemy : MonoBehaviour
 
     public GameObject[] spawnPoints;
 
+    public bool canSpawn;
+
     public float waitBetweenSpawns;
 
     public float spawnCounter;
@@ -23,13 +25,17 @@ public class SpawnEnemy : MonoBehaviour
 
     void Update()
     {
-        spawnCounter -= Time.deltaTime;
+        if (canSpawn == true) {
+            spawnCounter -= Time.deltaTime;
 
-        if (GameObject.FindGameObjectsWithTag("Enemy").Length < 5 && spawnCounter < 0 && enemySpawnedCounter <= 3) {
-            Spawn();
-        }
+            if (GameObject.FindGameObjectsWithTag("Enemy").Length < 5 && spawnCounter < 0 && enemySpawnedCounter <= 3) {
+                Spawn();
+            }
 
-        if (enemySpawnedCounter >= 4) {
+            if (enemySpawnedCounter >= 4) {
+                return;
+            }
+        } else {
             return;
         }
     }

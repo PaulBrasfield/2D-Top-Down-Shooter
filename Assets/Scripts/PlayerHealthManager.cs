@@ -8,6 +8,7 @@ public class PlayerHealthManager : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
 
+    public bool hasShield = true;
     public bool isDead;
 
     public bool canTakeDamage = true;
@@ -30,7 +31,7 @@ public class PlayerHealthManager : MonoBehaviour
         healthBar.SetMaxHealth(maxHealth);
         isDead = false;
 
-        startDelayCounter = false;
+        //startDelayCounter = false;
 
         //delayTime = waitForTime;
     }
@@ -66,6 +67,7 @@ public class PlayerHealthManager : MonoBehaviour
 
     public void KillPlayer() {
         isDead = true;
+        hasShield = false;
 		GameObject effect = Instantiate(deathEffect, this.gameObject.transform.position, Quaternion.identity);
 		AudioSource.PlayClipAtPoint(deathEffectClip, this.transform.position);
 
