@@ -791,5 +791,5 @@ MonoBehaviour:
   destroyEffect: {fileID: 7055881603190607276, guid: 30aa50b58564ecc45ab94bc19c7dc3d4,
     type: 3}
   bulletForce: 20
-  waitBetweenShots: 0.3
+  waitBetweenShots: 0.4
   playerHealthManager: {fileID: 0}

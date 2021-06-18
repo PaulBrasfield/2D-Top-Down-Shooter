@@ -30,9 +30,14 @@ public class PlayerShieldManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentShield = maxShield;
+        //currentShield = maxShield;
+
+        if (!playerHealthManager.hasShield) {
+            currentShield = 0;
+        }
+
         shieldBar.SetMaxShield(maxShield);
-        isBroken = false;
+        shieldBar.gameObject.SetActive(false);
 
         shieldRing.SetActive(false);
 
@@ -67,10 +72,13 @@ public class PlayerShieldManager : MonoBehaviour
 
     public void SetShieldActive() {
         shieldRing.SetActive(true);
+        shieldBar.gameObject.SetActive(true);
+
     }
 
     public void SetShieldInactive() {
         shieldRing.SetActive(false);
+        shieldBar.gameObject.SetActive(false);
     }
 
     public void TakeDamage(int damage) {
@@ -80,16 +88,15 @@ public class PlayerShieldManager : MonoBehaviour
 
     public void GiveShield(int shield) {
         currentShield += shield;
-        shieldBar.SetShield(shield);
+        shieldBar.SetShield(currentShield);
     }
 
     void DestroyShield() {
-        isBroken = true;
         playerHealthManager.hasShield = false;
 		//GameObject effect = Instantiate(breakEffect, this.gameObject.transform.position, Quaternion.identity);
 		AudioSource.PlayClipAtPoint(breakEffectClip, this.transform.position);
 
-        Destroy(GameObject.FindGameObjectWithTag("Player Shield Bar"));
+        shieldBar.gameObject.SetActive(false);
        //Destroy(effect, 1f);
     }
 }

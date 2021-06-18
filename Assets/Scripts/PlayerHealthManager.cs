@@ -8,7 +8,7 @@ public class PlayerHealthManager : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
 
-    public bool hasShield = true;
+    public bool hasShield = false;
     public bool isDead;
 
     public bool canTakeDamage = true;
