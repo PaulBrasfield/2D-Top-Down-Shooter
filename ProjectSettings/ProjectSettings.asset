@@ -623,10 +623,10 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: 38d62d60-ed49-4552-b834-db9d185fe091
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: 2D Top Down Shooter
+  organizationId: paul-brasfield
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

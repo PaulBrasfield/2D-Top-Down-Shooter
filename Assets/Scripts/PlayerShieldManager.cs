@@ -13,6 +13,7 @@ public class PlayerShieldManager : MonoBehaviour
 
     public bool canTakeDamage = true;
 	public bool canBeDestroyed = true;
+    public bool currentShieldIsMaxShield;
 
     public ShieldBar shieldBar;
 
@@ -30,7 +31,14 @@ public class PlayerShieldManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //currentShield = maxShield;
+        shieldBar.SetMaxShield(maxShield);
+
+        if (currentShieldIsMaxShield == true) {
+            currentShield = maxShield;
+            shieldBar.SetShield(currentShield);
+        } else {
+            shieldBar.SetShield(currentShield);
+        }
 
         if (!playerHealthManager.hasShield) {
             currentShield = 0;
@@ -47,10 +55,6 @@ public class PlayerShieldManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift)) {
-            TakeDamage(10);
-        }
-
         if (playerHealthManager.hasShield == true) {
             SetShieldActive();
         } else {
@@ -94,7 +98,7 @@ public class PlayerShieldManager : MonoBehaviour
     void DestroyShield() {
         playerHealthManager.hasShield = false;
 		//GameObject effect = Instantiate(breakEffect, this.gameObject.transform.position, Quaternion.identity);
-		AudioSource.PlayClipAtPoint(breakEffectClip, this.transform.position);
+		//AudioSource.PlayClipAtPoint(breakEffectClip, this.transform.position);
 
         shieldBar.gameObject.SetActive(false);
        //Destroy(effect, 1f);

@@ -11,7 +11,7 @@ public class HealthBar : MonoBehaviour
     public Image fill;
 
     void Start() {
-        slider = this.gameObject.GetComponent<Slider>();
+        //slider = this.gameObject.GetComponent<Slider>();
     }
 
     public void SetMaxHealth(int health) {

@@ -14,6 +14,8 @@ public class PlayerHealthManager : MonoBehaviour
     public bool canTakeDamage = true;
 	public bool canDie = true;
 
+    public bool currentHealthIsMaxHealth;
+
     public HealthBar healthBar;
 
     public GameObject deathEffect;
@@ -27,8 +29,15 @@ public class PlayerHealthManager : MonoBehaviour
 
     void Start()
     {
-        currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+
+        if (currentHealthIsMaxHealth == true) {
+            currentHealth = maxHealth;
+            healthBar.SetHealth(currentHealth);
+        } else {
+            healthBar.SetHealth(currentHealth);
+        }
+
         isDead = false;
 
         //startDelayCounter = false;
